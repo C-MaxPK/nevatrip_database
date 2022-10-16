@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>БД</title>
+  </head>
+  <body>
+    <h1>Задание 1</h1>
+    <p>
+      Нужно уметь сохранять при заказе 2 дополнительных типа билета, льготный и
+      групповой в бд. <b>Задача</b> - Показать конечный вид таблицы с
+      добавленными типами билетов. Объяснить свое решение.
+    </p>
+    <p>
+      В общем заказе могут быть как обычные билеты для взрослых/детей, так и
+      льготные для взрослых/детей. Соответственно, подсчет для каждых типов
+      билетов. А для групповых билетов подразумеваться должна скидка (например
+      15%) для заказа, в котором, например, от 10 билетов и более.
+    </p>
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>id</th>
+          <th>event_id</th>
+          <th>event_date</th>
+          <th>ticket_adult_price</th>
+          <th>ticket_adult_quantity</th>
+          <th>ticket_adult_benefit_price</th>
+          <th>ticket_adult_benefit_quantity</th>
+          <th>ticket_kid_price</th>
+          <th>ticket_kid_quantity</th>
+          <th>ticket_kid_benefit_price</th>
+          <th>ticket_kid_benefit_quantity</th>
+          <th>barcode</th>
+          <th>user_id</th>
+          <th>total_ticket</th>
+          <th>equal_price</th>
+          <th>equal_price_group</th>
+          <th>created</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>003</td>
+          <td>2021-08-21 13:00:00</td>
+          <td>700</td>
+          <td>1</td>
+          <td>630</td>
+          <td>1</td>
+          <td>450</td>
+          <td>0</td>
+          <td>405</td>
+          <td>0</td>
+          <td>11111111</td>
+          <td>00451</td>
+          <td>2</td>
+          <td>1330</td>
+          <td>null</td>
+          <td>2021-01-11 13:22:09</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>006</td>
+          <td>2021-07-29 18:00:00</td>
+          <td>1000</td>
+          <td>0</td>
+          <td>900</td>
+          <td>3</td>
+          <td>800</td>
+          <td>2</td>
+          <td>720</td>
+          <td>1</td>
+          <td>22222222</td>
+          <td>00364</td>
+          <td>6</td>
+          <td>5020</td>
+          <td>null</td>
+          <td>2021-01-12 16:62:08</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>003</td>
+          <td>2021-08-15 17:00:00</td>
+          <td>700</td>
+          <td>4</td>
+          <td>630</td>
+          <td>1</td>
+          <td>450</td>
+          <td>3</td>
+          <td>405</td>
+          <td>4</td>
+          <td>33333333</td>
+          <td>00015</td>
+          <td>12</td>
+          <td>6400</td>
+          <td>5440</td>
+          <td>2021-01-13 10:08:45</td>
+        </tr>
+      </tbody>
+    </table>
+    <h1>Задание 2</h1>
+    <p>
+      Если в одном заказе было куплено несколько билетов, 2 взрослых, 3 детских,
+      4 льготных - то должно быть 9 баркодов для каждого билета соответственно.
+      <b>Задача</b> - Показать конечный вид таблицы, где у каждого билета свой
+      баркод. Объяснить свое решение.
+    </p>
+    <p>
+      Чтобы не загромождать таблицу, в поле "barcode" оставить общий баркод и
+      создать четыре новые таблицы для каждого вида билета с баркодами.
+    </p>
+
+    <table class="table table-barcode">
+      <tbody>
+        <tr>
+          <th>id</th>
+          <th>name</th>
+          <th>ticket_adult_barcode</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>name1</td>
+          <td>345435344</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>name2</td>
+          <td>12412552</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>name3</td>
+          <td>245245356</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="table table-barcode">
+      <tbody>
+        <tr>
+          <th>id</th>
+          <th>name</th>
+          <th>ticket_adult_benefit_barcode</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>name4</td>
+          <td>658568</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>name5</td>
+          <td>34575741</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>name6</td>
+          <td>1345577</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="table table-barcode">
+      <tbody>
+        <tr>
+          <th>id</th>
+          <th>name</th>
+          <th>ticket_kid_barcode</th>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>name7</td>
+          <td>2573763568</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>name8</td>
+          <td>458256268</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>name9</td>
+          <td>7698679589</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="table table-barcode">
+      <tbody>
+        <tr>
+          <th>id</th>
+          <th>name</th>
+          <th>ticket_kid_benefit_barcode</th>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>name10</td>
+          <td>35653868</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>name11</td>
+          <td>356837626</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>name12</td>
+          <td>254746848</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
